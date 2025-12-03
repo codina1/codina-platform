@@ -10,7 +10,10 @@
 $args = wp_parse_args( $args, array(
 	'lessons' => array(),
 	'is_purchased' => false,
+	'lesson_lock_status' => 'locked',
 ) );
+
+$lesson_lock_status = isset( $args['lesson_lock_status'] ) ? $args['lesson_lock_status'] : 'locked';
 ?>
 
 <section id="curriculum" class="course-curriculum card" x-data="{ openLesson: null }">
@@ -21,7 +24,18 @@ $args = wp_parse_args( $args, array(
 			<?php foreach ( $args['lessons'] as $index => $lesson ) : ?>
 				<?php
 				$lesson_video = get_post_meta( $lesson->ID, '_codina_video_url', true );
-				$lesson_order = get_post_meta( $lesson->ID, '_codina_order', true );
+				$lesson_duration = get_post_meta( $lesson->ID, '_codina_duration', true );
+				$lesson_summary = get_post_meta( $lesson->ID, '_codina_summary', true );
+				$lesson_free_status = get_post_meta( $lesson->ID, '_codina_free_status', true );
+				
+				// Check if lesson is locked
+				$is_lesson_locked = false;
+				if ( empty( $lesson_free_status ) ) {
+					$lesson_free_status = $args['lesson_lock_status'] ?? 'locked';
+				}
+				if ( 'locked' === $lesson_free_status && ! $args['is_purchased'] ) {
+					$is_lesson_locked = true;
+				}
 				?>
 				<div class="border border-gray-200 rounded-lg overflow-hidden">
 					<button
@@ -34,14 +48,22 @@ $args = wp_parse_args( $args, array(
 							</div>
 							<div class="flex-1 text-right">
 								<h3 class="font-bold text-gray-900"><?php echo esc_html( $lesson->post_title ); ?></h3>
-								<?php if ( $lesson_video ) : ?>
-									<p class="text-sm text-gray-500 mt-1">ویدیو آموزشی</p>
+								<?php if ( $lesson_summary ) : ?>
+									<p class="text-sm text-gray-600 mt-1"><?php echo esc_html( wp_trim_words( $lesson_summary, 15 ) ); ?></p>
 								<?php endif; ?>
+								<div class="flex items-center gap-3 mt-1 text-xs text-gray-500">
+									<?php if ( $lesson_video ) : ?>
+										<span>🎥 ویدیو</span>
+									<?php endif; ?>
+									<?php if ( $lesson_duration ) : ?>
+										<span>⏱ <?php echo esc_html( $lesson_duration ); ?></span>
+									<?php endif; ?>
+								</div>
 							</div>
 						</div>
 						<div class="flex items-center gap-3">
-							<?php if ( ! $args['is_purchased'] ) : ?>
-								<span class="text-gray-400">🔒</span>
+							<?php if ( $is_lesson_locked ) : ?>
+								<span class="text-gray-400" title="این درس قفل است">🔒</span>
 							<?php else : ?>
 								<a 
 									href="<?php echo esc_url( get_permalink( $lesson->ID ) ); ?>" 

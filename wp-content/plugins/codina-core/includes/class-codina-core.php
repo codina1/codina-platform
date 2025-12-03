@@ -74,6 +74,8 @@ class Codina_Core {
 		 */
 		require_once CODINA_CORE_PATH . 'includes/meta-boxes/class-meta-box-handler.php';
 		require_once CODINA_CORE_PATH . 'includes/meta-boxes/learning-path-meta.php';
+		require_once CODINA_CORE_PATH . 'includes/meta-boxes/course-meta.php';
+		require_once CODINA_CORE_PATH . 'includes/meta-boxes/lesson-meta.php';
 		require_once CODINA_CORE_PATH . 'includes/meta-boxes/phase-meta.php';
 		require_once CODINA_CORE_PATH . 'includes/meta-boxes/step-meta.php';
 		require_once CODINA_CORE_PATH . 'includes/meta-boxes/resource-meta.php';
@@ -119,6 +121,8 @@ class Codina_Core {
 
 		// Initialize meta boxes.
 		new Codina_Learning_Path_Meta();
+		new Codina_Course_Meta();
+		new Codina_Lesson_Meta();
 		new Codina_Phase_Meta();
 		new Codina_Step_Meta();
 		new Codina_Resource_Meta();

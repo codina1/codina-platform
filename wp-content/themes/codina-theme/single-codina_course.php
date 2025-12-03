@@ -17,6 +17,11 @@ while ( have_posts() ) :
 	$duration = get_post_meta( $course_id, '_codina_duration', true );
 	$last_updated = get_post_meta( $course_id, '_codina_last_updated', true );
 	$prerequisites = get_post_meta( $course_id, '_codina_prerequisites', true );
+	$benefits = get_post_meta( $course_id, '_codina_benefits', true );
+	$course_type = get_post_meta( $course_id, '_codina_course_type', true );
+	$skills = get_post_meta( $course_id, '_codina_skills', true );
+	$lesson_lock_status = get_post_meta( $course_id, '_codina_lesson_lock_status', true );
+	$additional_resources = get_post_meta( $course_id, '_codina_additional_resources', false );
 	$wc_product_id = get_post_meta( $course_id, '_codina_woocommerce_product_id', true );
 	
 	// Get WooCommerce product data
@@ -114,12 +119,17 @@ while ( have_posts() ) :
 					get_template_part( 'template-parts/course/course-content', null, array(
 						'full_description' => $full_description,
 						'prerequisites' => $prerequisites,
+						'benefits' => $benefits,
+						'course_type' => $course_type,
+						'skills' => $skills,
+						'additional_resources' => $additional_resources,
 					) );
 					
 					// Curriculum accordion
 					get_template_part( 'template-parts/course/course-curriculum', null, array(
 						'lessons' => $lessons,
 						'is_purchased' => $is_purchased,
+						'lesson_lock_status' => $lesson_lock_status,
 					) );
 					
 					// Related paths

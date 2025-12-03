@@ -30,6 +30,27 @@ $args = wp_parse_args( $args, array(
 		</section>
 	<?php endif; ?>
 	
+	<?php
+	$benefits = get_post_meta( get_the_ID(), '_codina_benefits', true );
+	if ( $benefits ) :
+		$benefits_lines = explode( "\n", $benefits );
+		$benefits_lines = array_filter( array_map( 'trim', $benefits_lines ) );
+		?>
+		<section class="card">
+			<h2 class="text-2xl font-bold mb-4">مزایا / خروجی‌های دوره</h2>
+			<ul class="space-y-2 text-gray-700">
+				<?php foreach ( $benefits_lines as $benefit ) : ?>
+					<?php if ( ! empty( $benefit ) ) : ?>
+						<li class="flex items-start gap-3">
+							<span class="text-codina-600 mt-1">✓</span>
+							<span><?php echo esc_html( $benefit ); ?></span>
+						</li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		</section>
+	<?php endif; ?>
+	
 	<section class="card">
 		<h2 class="text-2xl font-bold mb-4">این دوره برای چه کسانی مناسب است؟</h2>
 		<ul class="space-y-2 text-gray-700">
@@ -61,27 +82,74 @@ $args = wp_parse_args( $args, array(
 		</section>
 	<?php endif; ?>
 	
-	<section class="card">
-		<h2 class="text-2xl font-bold mb-4">آنچه در این دوره یاد می‌گیرید</h2>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-			<div class="flex items-start gap-3">
-				<span class="text-codina-600 text-xl">🎯</span>
-				<span>درک کامل مفاهیم اصلی</span>
+	<?php
+	$skills = get_post_meta( get_the_ID(), '_codina_skills', true );
+	$course_type = get_post_meta( get_the_ID(), '_codina_course_type', true );
+	$additional_resources = get_post_meta( get_the_ID(), '_codina_additional_resources', false );
+	
+	$course_type_labels = array(
+		'video' => 'ویدئویی',
+		'text' => 'متنی',
+		'mixed' => 'ترکیبی',
+	);
+	$course_type_label = isset( $course_type_labels[ $course_type ] ) ? $course_type_labels[ $course_type ] : '';
+	?>
+	
+	<?php if ( $skills ) : ?>
+		<section class="card">
+			<h2 class="text-2xl font-bold mb-4">مهارت‌های این دوره</h2>
+			<div class="flex flex-wrap gap-2">
+				<?php
+				$skills_array = array_map( 'trim', explode( ',', $skills ) );
+				foreach ( $skills_array as $skill ) :
+					if ( ! empty( $skill ) ) :
+						?>
+						<span class="inline-block px-4 py-2 bg-codina-100 text-codina-700 rounded-full text-sm font-medium">
+							<?php echo esc_html( $skill ); ?>
+						</span>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</div>
-			<div class="flex items-start gap-3">
-				<span class="text-codina-600 text-xl">💡</span>
-				<span>کاربرد عملی در پروژه‌های واقعی</span>
+		</section>
+	<?php endif; ?>
+	
+	<?php if ( $course_type_label ) : ?>
+		<section class="card">
+			<h2 class="text-2xl font-bold mb-4">نوع دوره</h2>
+			<p class="text-gray-700">
+				<span class="inline-block px-4 py-2 bg-accent-100 text-accent-700 rounded-full font-medium">
+					<?php echo esc_html( $course_type_label ); ?>
+				</span>
+			</p>
+		</section>
+	<?php endif; ?>
+	
+	<?php if ( ! empty( $additional_resources ) && is_array( $additional_resources ) ) : ?>
+		<section class="card">
+			<h2 class="text-2xl font-bold mb-4">لینک‌ها و منابع اضافی</h2>
+			<div class="space-y-3">
+				<?php foreach ( $additional_resources as $resource ) : ?>
+					<?php
+					$resource_title = isset( $resource['title'] ) ? $resource['title'] : '';
+					$resource_url   = isset( $resource['url'] ) ? $resource['url'] : '';
+					if ( ! empty( $resource_title ) && ! empty( $resource_url ) ) :
+						?>
+						<div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg hover:border-codina-300 transition-colors">
+							<span class="text-2xl">🔗</span>
+							<div class="flex-1">
+								<a href="<?php echo esc_url( $resource_url ); ?>" target="_blank" rel="noopener" class="text-codina-600 hover:text-codina-700 font-medium">
+									<?php echo esc_html( $resource_title ); ?>
+								</a>
+							</div>
+							<a href="<?php echo esc_url( $resource_url ); ?>" target="_blank" rel="noopener" class="text-gray-400 hover:text-gray-600">
+								↗
+							</a>
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</div>
-			<div class="flex items-start gap-3">
-				<span class="text-codina-600 text-xl">🔧</span>
-				<span>تکنیک‌ها و بهترین روش‌ها</span>
-			</div>
-			<div class="flex items-start gap-3">
-				<span class="text-codina-600 text-xl">🚀</span>
-				<span>آماده شدن برای کار حرفه‌ای</span>
-			</div>
-		</div>
-	</section>
+		</section>
+	<?php endif; ?>
 
 </div>
 

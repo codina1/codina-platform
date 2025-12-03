@@ -50,7 +50,7 @@ $level_label = isset( $level_labels[ $args['level'] ] ) ? $level_labels[ $args['
 				<?php if ( $args['duration'] ) : ?>
 					<div class="flex items-center gap-2">
 						<span>⏱</span>
-						<span><?php echo esc_html( $args['duration'] ); ?></span>
+						<span><?php echo esc_html( $args['duration'] ); ?> ساعت</span>
 					</div>
 				<?php endif; ?>
 				
