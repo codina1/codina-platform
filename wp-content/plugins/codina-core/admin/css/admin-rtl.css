@@ -1,0 +1,266 @@
+/**
+ * Codina Core Admin RTL Styles
+ *
+ * @package Codina_Core
+ */
+
+/* RTL Base Styles */
+.codina-meta-box {
+	direction: rtl;
+	text-align: right;
+}
+
+.codina-meta-box .form-table th {
+	text-align: right;
+	padding-right: 0;
+	padding-left: 20px;
+}
+
+.codina-meta-box .form-table td {
+	padding-right: 0;
+	padding-left: 20px;
+}
+
+/* Outcomes Container */
+#codina-outcomes-container {
+	margin-bottom: 10px;
+}
+
+.codina-outcome-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+	direction: rtl;
+}
+
+.codina-outcome-item input {
+	flex: 1;
+}
+
+.codina-outcome-item .button {
+	margin: 0;
+}
+
+/* Hierarchy Manager */
+.codina-hierarchy-container {
+	direction: rtl;
+	text-align: right;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	border-radius: 4px;
+	margin: 20px 0;
+}
+
+.codina-hierarchy-container h2 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.codina-phases-list {
+	margin-top: 20px;
+}
+
+.codina-phase-item {
+	margin-bottom: 30px;
+	padding: 15px;
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.codina-phase-header {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.codina-phase-header h3 {
+	margin: 0;
+	flex: 1;
+}
+
+.codina-phase-header h3 a {
+	text-decoration: none;
+	color: #2271b1;
+}
+
+.codina-phase-header h3 a:hover {
+	color: #135e96;
+}
+
+.codina-duration,
+.codina-order,
+.codina-type {
+	display: inline-block;
+	padding: 4px 8px;
+	background: #e5e5e5;
+	border-radius: 3px;
+	font-size: 12px;
+	color: #555;
+}
+
+.codina-steps-list {
+	margin-right: 20px;
+	margin-top: 15px;
+}
+
+.codina-step-item {
+	margin-bottom: 20px;
+	padding: 12px;
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 3px;
+}
+
+.codina-step-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+}
+
+.codina-step-header h4 {
+	margin: 0;
+	flex: 1;
+}
+
+.codina-step-header h4 a {
+	text-decoration: none;
+	color: #2271b1;
+	font-size: 14px;
+}
+
+.codina-step-header h4 a:hover {
+	color: #135e96;
+}
+
+.codina-resources-list {
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+.codina-resources-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.codina-resources-list li {
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.codina-resources-list li:last-child {
+	border-bottom: none;
+}
+
+.codina-resources-list li a {
+	text-decoration: none;
+	color: #2271b1;
+}
+
+.codina-resources-list li a:hover {
+	color: #135e96;
+}
+
+.codina-resource-type {
+	color: #666;
+	font-size: 12px;
+	margin-right: 8px;
+}
+
+.codina-required {
+	display: inline-block;
+	padding: 2px 6px;
+	background: #d63638;
+	color: #fff;
+	border-radius: 2px;
+	font-size: 11px;
+	margin-right: 8px;
+}
+
+.codina-no-items {
+	color: #666;
+	font-style: italic;
+	margin: 10px 0;
+}
+
+/* Buttons */
+.codina-hierarchy-container .button {
+	margin-top: 10px;
+}
+
+.codina-hierarchy-container .button-small {
+	font-size: 12px;
+	padding: 4px 8px;
+	height: auto;
+	line-height: 1.5;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.codina-phase-header,
+	.codina-step-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.codina-duration,
+	.codina-order,
+	.codina-type {
+		margin-top: 5px;
+	}
+}
+
+/* Select and Input RTL */
+.codina-meta-box select,
+.codina-meta-box input[type="text"],
+.codina-meta-box input[type="url"],
+.codina-meta-box input[type="number"],
+.codina-meta-box textarea {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Checkbox RTL */
+.codina-meta-box input[type="checkbox"] {
+	margin-left: 8px;
+	margin-right: 0;
+}
+
+/* Description text */
+.codina-meta-box .description {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Parent Selection Meta Box */
+.codina-parent-selection {
+	direction: rtl;
+	text-align: right;
+}
+
+.codina-parent-selection label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+.codina-parent-selection select {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.codina-parent-selection .description {
+	margin-top: 8px;
+	color: #646970;
+	font-size: 13px;
+}
+

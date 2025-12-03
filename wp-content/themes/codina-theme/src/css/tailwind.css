@@ -1,0 +1,260 @@
+/**
+ * Tailwind CSS Entry Point
+ * 
+ * @package Codina
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Codina Theme - Design System
+ * 
+ * Brand Colors:
+ * - Primary (Codina Blue): codina-500 (#0ea5e9), codina-600 (#0284c7)
+ * - Accent (Purple): accent-500 (#d946ef), accent-600 (#c026d3)
+ * 
+ * Typography Scale:
+ * - H1: text-4xl md:text-6xl (Hero), text-3xl md:text-5xl (Pages)
+ * - H2: text-2xl md:text-3xl lg:text-4xl (Section headings)
+ * - H3: text-xl md:text-2xl (Card titles)
+ * - Body: text-base (16px), line-height: 1.75-1.8
+ * 
+ * Spacing:
+ * - Section padding: py-16 md:py-24
+ * - Card gap: gap-6 md:gap-8
+ * - Component margins: mb-8 md:mb-12
+ * 
+ * Border Radius:
+ * - Cards/Buttons: rounded-lg (0.5rem)
+ * - Badges/Pills: rounded-full
+ */
+
+/* Base RTL styles */
+@layer base {
+	html {
+		@apply font-persian;
+		direction: rtl;
+		text-align: right;
+	}
+
+	body {
+		@apply bg-white text-gray-900;
+		font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+		line-height: 1.75;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Typography for Persian */
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-bold;
+		line-height: 1.4;
+		letter-spacing: 0;
+	}
+
+	h1 {
+		@apply text-4xl md:text-5xl;
+	}
+
+	h2 {
+		@apply text-3xl md:text-4xl;
+	}
+
+	h3 {
+		@apply text-2xl md:text-3xl;
+	}
+
+	h4 {
+		@apply text-xl md:text-2xl;
+	}
+
+	h5 {
+		@apply text-lg md:text-xl;
+	}
+
+	h6 {
+		@apply text-base md:text-lg;
+	}
+
+	p {
+		@apply mb-4;
+		line-height: 1.8;
+	}
+
+	/* Links */
+	a {
+		@apply text-codina-600 hover:text-codina-700 transition-colors;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	/* Lists */
+	ul, ol {
+		@apply mb-4 pr-6;
+	}
+
+	li {
+		@apply mb-2;
+	}
+
+	/* RTL-specific adjustments */
+	[dir="rtl"] {
+		text-align: right;
+	}
+
+	/* RTL gradient direction */
+	[dir="rtl"] .bg-gradient-to-l {
+		background-image: linear-gradient(to left, var(--tw-gradient-stops));
+	}
+
+	[dir="rtl"] .bg-gradient-to-r {
+		background-image: linear-gradient(to right, var(--tw-gradient-stops));
+	}
+
+	/* Container */
+	.container {
+		@apply mx-auto px-4 sm:px-6 lg:px-8;
+		max-width: 1280px;
+	}
+}
+
+/* Components */
+@layer components {
+	/* Buttons - Consistent design language */
+	.btn {
+		@apply inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200;
+		@apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.btn-primary {
+		@apply bg-codina-600 text-white hover:bg-codina-700 focus:ring-codina-500;
+		box-shadow: 0 2px 4px rgba(2, 132, 199, 0.2);
+	}
+
+	.btn-primary:hover {
+		box-shadow: 0 4px 8px rgba(2, 132, 199, 0.3);
+		transform: translateY(-1px);
+	}
+
+	.btn-secondary {
+		@apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+	}
+
+	/* Cards - Consistent design language */
+	.card {
+		@apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+		transition: box-shadow 0.3s ease;
+	}
+
+	.card:hover {
+		@apply shadow-xl;
+	}
+
+	/* Site header */
+	.site-header {
+		@apply bg-white border-b border-gray-200 py-4;
+	}
+
+	.site-branding {
+		@apply flex items-center;
+	}
+
+	/* Navigation */
+	.main-navigation {
+		@apply flex items-center;
+	}
+
+	.main-navigation ul {
+		@apply flex items-center space-x-reverse space-x-4 list-none m-0 p-0;
+	}
+
+	.main-navigation a {
+		@apply text-gray-700 hover:text-codina-600 px-3 py-2;
+	}
+
+	/* Site footer */
+	.site-footer {
+		@apply bg-gray-50 border-t border-gray-200 py-8 mt-auto;
+	}
+
+	.site-info {
+		@apply text-center text-gray-600 text-sm;
+	}
+
+	/* Skip link for accessibility */
+	.skip-link {
+		@apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4;
+		@apply focus:z-50 focus:px-4 focus:py-2 focus:bg-codina-600 focus:text-white focus:rounded;
+	}
+}
+
+/* Utilities */
+@layer utilities {
+	/* RTL-specific utilities */
+	.text-start {
+		text-align: right;
+	}
+
+	.text-end {
+		text-align: left;
+	}
+
+	/* Persian number formatting */
+	.persian-numbers {
+		font-variant-numeric: normal;
+		direction: rtl;
+	}
+
+	/* Line clamp utilities */
+	.line-clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.line-clamp-3 {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	/* Course/Lesson page specific */
+	.course-page,
+	.lesson-page {
+		padding-bottom: 100px; /* Space for mobile purchase box */
+	}
+
+	@media (min-width: 1024px) {
+		.course-page,
+		.lesson-page {
+			padding-bottom: 0;
+		}
+	}
+
+	/* Mobile purchase box spacing */
+	@media (max-width: 1023px) {
+		.course-page .container,
+		.lesson-page .container {
+			padding-bottom: 100px;
+		}
+	}
+
+	/* Lesson video responsive */
+	.lesson-video iframe {
+		border-radius: 0.5rem;
+	}
+}
+

@@ -1,0 +1,107 @@
+/**
+ * Custom CSS for Codina Theme
+ * 
+ * Additional styles that don't fit in Tailwind utilities
+ * 
+ * @package Codina
+ */
+
+/* Ensure RTL direction for all elements */
+* {
+	direction: inherit;
+}
+
+/* Screen reader only class */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	clip: auto !important;
+	display: block;
+	height: auto;
+	left: 5px;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* RTL adjustments for WordPress default classes */
+.alignleft {
+	float: right;
+	margin-left: 1.5em;
+	margin-right: 0;
+}
+
+.alignright {
+	float: left;
+	margin-right: 1.5em;
+	margin-left: 0;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* WordPress gallery RTL */
+.gallery {
+	direction: rtl;
+}
+
+.gallery-item {
+	direction: rtl;
+}
+
+/* Comments RTL */
+.comment-list {
+	direction: rtl;
+	text-align: right;
+}
+
+.comment-meta {
+	direction: rtl;
+}
+
+/* Search form RTL */
+.search-form {
+	direction: rtl;
+}
+
+.search-form input[type="search"] {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Navigation menu RTL */
+.menu {
+	direction: rtl;
+	text-align: right;
+}
+
+.menu-item {
+	direction: rtl;
+}
+
+/* Ensure proper RTL for all text inputs */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+	direction: rtl;
+	text-align: right;
+}
+
+/* Select dropdowns RTL */
+select {
+	direction: rtl;
+	text-align: right;
+}
+

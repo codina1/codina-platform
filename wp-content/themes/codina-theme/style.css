@@ -1,0 +1,22 @@
+/*
+Theme Name: Codina
+Theme URI: https://codina.ir
+Author: Codina Team
+Author URI: https://codina.ir
+Description: تم RTL-first پلتفرم آموزشی Codina - طراحی شده برای فارسی‌زبانان
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: codina
+Domain Path: /languages
+Tags: rtl-language-support, education, learning, custom-menu, featured-images, threaded-comments, translation-ready
+
+Codina is a modern, RTL-first educational platform theme designed specifically for Persian (Farsi) speakers.
+*/
+
+/* Base styles are handled by Tailwind CSS */
+/* This file is mainly for WordPress theme header */
+
